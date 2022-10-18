@@ -1,4 +1,4 @@
-# Formulario Centro Pokemon
+# Centro Pokemon
 
 Primer proyecto integrador de la materia de especialización en Frontend I. 
 

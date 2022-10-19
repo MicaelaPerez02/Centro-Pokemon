@@ -1,11 +1,16 @@
 import React from "react";
 import { useContext } from "react";
-import { InputContext } from "../../context/ContextoFormulario";
+import { FormularioContexto } from "../../context/ContextoFormulario";
 
 const Detalle = () => {
   // Aqui deberíamos obtener los datos del formulario para poder mostrarlo en
   // la vista previa.
-  const [input, setInput] = useContext(InputContext);
+  const [dataFormulario, setDataFormulario] = useContext(FormularioContexto);
+
+  const enviarSolicitud = () => {
+    alert("Solicitud enviada :)");
+    setDataFormulario("");
+  }
 
   return (
     <div className="detalle-formulario">
@@ -15,20 +20,20 @@ const Detalle = () => {
       <section className="datos-cliente">
         <h4>Datos del Entrenador</h4>
         <div className="fila">
-          <p>Nombre:{input}</p>
-          <p>Apellido:</p>
-          <p>Email:</p>
+          <p>Nombre:{dataFormulario.nombre}</p>
+          <p>Apellido:{dataFormulario.apellido}</p>
+          <p>Email:{dataFormulario.email}</p>
         </div>
       </section>
       <section className="datos-cliente">
         <h4>Datos del Pokémon</h4>
         <div className="fila">
-          <p>Nombre:</p>
+          <p>Nombre:{dataFormulario.nombrePokemon}</p>
         </div>
       </section>
       <button
         className="boton-enviar"
-        onClick={() => alert("Solicitud enviada :)")}
+        onClick={enviarSolicitud}
       >
         Enviar Solicitud
       </button>

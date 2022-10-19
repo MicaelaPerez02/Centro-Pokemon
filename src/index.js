@@ -4,15 +4,15 @@ import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { InputProvider } from "./context/ContextoFormulario";
+import { FormularioProvider } from "./context/ContextoFormulario";
 
 ReactDOM.render(
   <React.StrictMode>
-    <InputProvider>
+    <FormularioProvider>
       <BrowserRouter>
         <App />
       </BrowserRouter>
-    </InputProvider>
+    </FormularioProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

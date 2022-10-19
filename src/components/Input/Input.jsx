@@ -1,30 +1,32 @@
-import React, { useState } from "react";
-import { useContext } from "react";
-import { useRef } from "react";
-import { InputContext } from "../../context/ContextoFormulario";
+import React, { useState, useContext, useRef } from "react";
+import { FormularioContexto } from "../../context/ContextoFormulario";
 
 const Input = ({ name, label, type = "text" }) => {
   // Aqui deberíamos acceder al estado global para poder obtener los datos
   // del formulario y una manera de actualizar los mismos.
-  const [input, setInput] = useContext(InputContext);
+  const [dataFormulario, setDataFormulario] = useContext(FormularioContexto);
 
   // También, utilizaremos un estado local para manejar el estado del input.
-  const inputRef = useRef(null);
+  const [input, setInput] = useState("");
+
+  const inputRef = useRef("");
 
   const onChange = (e) => {
     // Aquí deberíamos actualizar el estado local del input.
-    console.log(input);
+    setInput(inputRef.current.value);
   };
 
   const onBlur = (e) => {
-    e.preventDefault();
-
-    setInput(inputRef.current.value);
     // Aqui deberíamos actualizar el estado global con los datos de
     // cada input.
     // TIP: Podemos utilizar el nombre de cada input para guardar
     // los datos en el estado global usando una notación de { clave: valor }
-    console.log(name);
+    e.preventDefault();
+
+    setDataFormulario({
+      ...dataFormulario,
+      [name]: input,
+    })
   };
 
   return (
@@ -33,6 +35,7 @@ const Input = ({ name, label, type = "text" }) => {
       <input
         ref={inputRef}
         type={type}
+        value={input}
         id={name}
         onChange={onChange}
         onBlur={onBlur}

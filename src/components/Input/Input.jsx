@@ -9,7 +9,7 @@ const Input = ({ name, label, type = "text" }) => {
   // También, utilizaremos un estado local para manejar el estado del input.
   const [input, setInput] = useState("");
 
-  const inputRef = useRef("");
+  const inputRef = useRef(null);
 
   const onChange = (e) => {
     // Aquí deberíamos actualizar el estado local del input.

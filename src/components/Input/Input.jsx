@@ -5,6 +5,7 @@ const Input = ({ name, label, type = "text" }) => {
   // Aqui deberíamos acceder al estado global para poder obtener los datos
   // del formulario y una manera de actualizar los mismos.
   const [dataFormulario, setDataFormulario] = useContext(FormularioContexto);
+  const [store, dispatch] = useContext(FormularioContexto);
 
   // También, utilizaremos un estado local para manejar el estado del input.
   const [input, setInput] = useState("");

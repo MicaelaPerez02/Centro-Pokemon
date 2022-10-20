@@ -6,10 +6,13 @@ const Detalle = () => {
   // Aqui deberíamos obtener los datos del formulario para poder mostrarlo en
   // la vista previa.
   const [dataFormulario, setDataFormulario] = useContext(FormularioContexto);
+  const [store, dispatch] = useContext(FormularioContexto);
 
   const enviarSolicitud = () => {
+    dispatch({ type: "ACTUALIZAR_ENTRENADOR"});
+    dispatch({ type: "ACTUALIZAR_POKEMON"});
+  
     alert("Solicitud enviada :)");
-    setDataFormulario("");
   }
 
   return (
@@ -29,6 +32,9 @@ const Detalle = () => {
         <h4>Datos del Pokémon</h4>
         <div className="fila">
           <p>Nombre:{dataFormulario.nombrePokemon}</p>
+          <p>Tipo:{dataFormulario.tipoPokemon}</p>
+          <p>Altura:{dataFormulario.alturaPokemon}</p>
+          <p>Edad:{dataFormulario.edadPokemon}</p>
         </div>
       </section>
       <button

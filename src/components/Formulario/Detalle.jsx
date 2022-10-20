@@ -3,14 +3,10 @@ import { useContext } from "react";
 import { FormularioContexto } from "../../context/ContextoFormulario";
 
 const Detalle = () => {
-  // Aqui deberíamos obtener los datos del formulario para poder mostrarlo en
-  // la vista previa.
-  const [dataFormulario, setDataFormulario] = useContext(FormularioContexto);
   const [store, dispatch] = useContext(FormularioContexto);
 
   const enviarSolicitud = () => {
-    dispatch({ type: "ACTUALIZAR_ENTRENADOR"});
-    dispatch({ type: "ACTUALIZAR_POKEMON"});
+    dispatch({ type: "SEND"});
   
     alert("Solicitud enviada :)");
   }
@@ -23,18 +19,18 @@ const Detalle = () => {
       <section className="datos-cliente">
         <h4>Datos del Entrenador</h4>
         <div className="fila">
-          <p>Nombre:{dataFormulario.nombre}</p>
-          <p>Apellido:{dataFormulario.apellido}</p>
-          <p>Email:{dataFormulario.email}</p>
+          <p>Nombre:{store?.dataInput?.nombre}</p>
+          <p>Apellido:{store?.dataInput?.apellido}</p>
+          <p>Email:{store?.dataInput?.email}</p>
         </div>
       </section>
       <section className="datos-cliente">
         <h4>Datos del Pokémon</h4>
         <div className="fila">
-          <p>Nombre:{dataFormulario.nombrePokemon}</p>
-          <p>Tipo:{dataFormulario.tipoPokemon}</p>
-          <p>Altura:{dataFormulario.alturaPokemon}</p>
-          <p>Edad:{dataFormulario.edadPokemon}</p>
+          <p>Nombre:{store?.dataInput?.nombrePokemon}</p>
+          <p>Tipo:{store?.dataInput?.tipoPokemon}</p>
+          <p>Altura:{store?.dataInput?.alturaPokemon}</p>
+          <p>Edad:{store?.dataInput?.edadPokemon}</p>
         </div>
       </section>
       <button

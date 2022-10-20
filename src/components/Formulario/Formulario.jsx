@@ -35,19 +35,19 @@ const Formulario = () => {
                 <img src={entrenador} alt="entrenador" />
                 <span>ENTRENADOR</span>
               </p>
-              <Input name="nombre" label="Nombre" />
-              <Input name="apellido" label="Apellido" />
-              <Input name="email" label="Email" type="email" />
+              <Input name="nombre" label="Nombre" alt='entrenador' />
+              <Input name="apellido" label="Apellido" alt='entrenador' />
+              <Input name="email" label="Email" type="email" alt='entrenador' />
             </div>
             <div>
               <p className="nombre-seccion">
                 <img src={pikachu} alt="pikachu" />
                 <span>POKEMON</span>
               </p>
-              <Input name="nombrePokemon" label="Nombre" />
-              <Input name="tipoPokemon" label="Tipo" />
-              <Input name="alturaPokemon" label="Altura" />
-              <Input name="edadPokemon" label="Edad" />
+              <Input name="nombrePokemon" label="Nombre" alt='pokemon' />
+              <Input name="tipoPokemon" label="Tipo" alt='pokemon' />
+              <Input name="alturaPokemon" label="Altura" alt='pokemon' />
+              <Input name="edadPokemon" label="Edad" alt='pokemon' />
             </div>
           </div>
           <Detalle />

@@ -1,15 +1,21 @@
-import React, { useState, useContext, useRef } from "react";
+import React, { useState, useContext, useRef, useEffect } from "react";
 import { FormularioContexto } from "../../context/ContextoFormulario";
 
-const Input = ({ name, label, alt, type = "text" }) => {
+const Input = ({ name, label, alt, isFocus, type = "text" }) => {
   const [store, dispatch] = useContext(FormularioContexto);
 
   const [input, setInput] = useState("");
 
-  const inputRef = useRef(null);
+ // const inputRef = useRef(null);
+
+  const focusRef = useRef(null);
+
+  useEffect(() => {
+    isFocus && focusRef.current.focus();
+  },[isFocus]);
 
   const onChange = (e) => {
-    setInput(inputRef.current.value);
+    setInput(e.target.value);
   };
 
   const onBlur = (e) => {
@@ -19,13 +25,13 @@ const Input = ({ name, label, alt, type = "text" }) => {
       dispatch({
         type: "ACTUALIZAR_ENTRENADOR",
         payload: {
-          ...store?.dataInput, [e.target.name]: inputRef.current.value,
+          ...store?.dataInput, [e.target.name]: e.target.value,
         },
       })
     } else dispatch({
       type: "ACTUALIZAR_POKEMON",
       payload: {
-        ...store?.dataInput, [e.target.name]: inputRef.current.value,
+        ...store?.dataInput, [e.target.name]: e.target.value,
       },
     });
   };
@@ -34,10 +40,9 @@ const Input = ({ name, label, alt, type = "text" }) => {
     <div className="input-contenedor">
       <label htmlFor={name}>{label}</label>
       <input
-        ref={inputRef}
+        ref={focusRef}
         type={type}
         value={input}
-        id={name}
         name={name}
         alt={alt}
         onChange={onChange}

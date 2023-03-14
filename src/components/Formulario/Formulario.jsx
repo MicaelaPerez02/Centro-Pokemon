@@ -13,7 +13,6 @@ const Formulario = () => {
         <div>
           <img src={pokebola} alt="pokebola" />
           <h2>Centro Pokemon de Ash</h2>
-        </div>
         <Link className="volver" to="/">
           Home
         </Link>
